@@ -1,0 +1,72 @@
+site_name: Smart I2C Motor Driver
+site_description: Python library for controlling I2C motor controllers
+site_author: Your Name
+site_url: https://yourusername.github.io/smart-i2c-motor-driver
+
+repo_name: yourusername/smart-i2c-motor-driver
+repo_url: https://github.com/yourusername/smart-i2c-motor-driver
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            heading_level: 2
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: installation.md
+    - Quick Start: getting-started.md
+  - User Guide:
+    - Basic Usage: user-guide/basic-usage.md
+    - CLI Usage: user-guide/cli.md
+  - API Reference:
+    - Core: reference/core.md
+    - Transports: reference/transports.md
+  - Troubleshooting: troubleshooting.md
+
+extra_css:
+  - stylesheets/extra.css

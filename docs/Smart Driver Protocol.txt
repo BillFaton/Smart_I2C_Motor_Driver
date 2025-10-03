@@ -1,0 +1,92 @@
+The communication with the motor must be in this order and structuration.
+The master should send one byte at the time because of the size of the slave's buffer. 
+	
+              		       Fist step	
+	i2c_start();           ------
+	i2c_write_byte(0xFE);  |The master start the communication and address the slave. Where the slave's address is "0xFE".			
+	i2c_write_byte(0x01);  |The master sends the first significant byte for the motor controller. 
+	i2c_stop();            |If this byte is "0x00" it means that the controller should deactivate the motor and if "0x01", the controller activate the motor. 
+			       |The master stop the communication.	       
+			       ------		
+	
+			       Second step	
+	i2c_start();	       -------	
+	i2c_write_byte(0xFE);  |The master start the communication and address the slave.
+	i2c_write_byte(0x01);  |The master sends the second significant byte for the motor controller.
+	i2c_stop();	       |If this byte is "0x00" or "0x01" it means respectively that the controller should turn the motor forward or backward
+			       |The master stop the communication.					
+			       -------	
+
+			       Third step	
+	i2c_start();	       ----------	
+	i2c_write_byte(0xFE);  |The master start the communication and address the slave.
+        i2c_write_byte(255);   |The master sends the third significant byte for the motor controller.
+	i2c_stop();	       |This byte represent the speed of the motor in term of PWM signal going from 0x00 to 0xFF.
+			       |The master stop the communication.
+			       ----------	
+
+
+
+So we can exploit the structure to create 
+
+# a fonction to go forward at speed "X" with a motor "Y"
+
+void forward(uint8_t X,uint8_t Y)
+{
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x01);	
+  i2c_stop();	
+
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x00);	
+  i2c_stop();
+
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(X);	
+  i2c_stop();
+}
+
+
+# a fonction to go backward at speed "X" with a motor "Y"
+
+void forward(uint8_t X,uint8_t Y)
+{
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x01);	
+  i2c_stop();	
+
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x01);	
+  i2c_stop();
+
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(X);	
+  i2c_stop();
+}
+
+
+# a fonction to stop a motor Y
+
+void Stop(uint8_t Y)
+{
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x00);	
+  i2c_stop();	
+
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x01);	
+  i2c_stop();
+
+  i2c_start();
+  i2c_write_byte(Y);
+  i2c_write_byte(0x00);	
+  i2c_stop();
+}
