@@ -27,7 +27,7 @@ class MotorDriver:
         address: I2C address of the motor controller (default: 0xFE)
         
     Example:
-        >>> from smart_i2c_motor_driver import I2CTransport, MotorDriver
+        >>> from smi2c_master import I2CTransport, MotorDriver
         >>> transport = I2CTransport(bus_number=1)
         >>> motor = MotorDriver(transport, address=0xFE)
         >>> motor.forward(128)  # Half speed forward

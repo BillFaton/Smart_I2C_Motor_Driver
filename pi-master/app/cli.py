@@ -7,7 +7,7 @@ from typing import Optional
 
 import click
 
-from smart_i2c_motor_driver import (
+from smi2c_master import (
     I2CTransport,
     InvalidAddressError,
     InvalidSpeedError,

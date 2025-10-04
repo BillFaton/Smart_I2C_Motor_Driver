@@ -2,7 +2,7 @@
 
 A Python library for controlling I2C motor controllers using the Smart Driver Protocol.
 
-[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://yourusername.github.io/smart-i2c-motor-driver)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://Mahudjro369.github.io/smart-i2c-motor-driver)
 [![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -35,7 +35,7 @@ uv pip install smart-i2c-motor-driver
 ### Basic Usage
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 # Create I2C transport
 transport = I2CTransport(bus_number=1)
@@ -55,7 +55,7 @@ transport.close()
 ### With Context Manager
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 with I2CTransport() as transport:
     motor = MotorDriver(transport)
@@ -91,13 +91,13 @@ This library handles the protocol automatically.
 
 ## Documentation
 
-Full documentation is available at: [https://yourusername.github.io/smart-i2c-motor-driver](https://yourusername.github.io/smart-i2c-motor-driver)
+Full documentation is available at: [https://Mahudjro369.github.io/smart-i2c-motor-driver](https://Mahudjro369.github.io/smart-i2c-motor-driver)
 
-- [Installation Guide](https://yourusername.github.io/smart-i2c-motor-driver/installation)
-- [Getting Started](https://yourusername.github.io/smart-i2c-motor-driver/getting-started)
-- [User Guide](https://yourusername.github.io/smart-i2c-motor-driver/user-guide/basic-usage)
-- [API Reference](https://yourusername.github.io/smart-i2c-motor-driver/reference/core)
-- [Troubleshooting](https://yourusername.github.io/smart-i2c-motor-driver/troubleshooting)
+- [Installation Guide](https://Mahudjro369.github.io/smart-i2c-motor-driver/installation)
+- [Getting Started](https://Mahudjro369.github.io/smart-i2c-motor-driver/getting-started)
+- [User Guide](https://Mahudjro369.github.io/smart-i2c-motor-driver/user-guide/basic-usage)
+- [API Reference](https://Mahudjro369.github.io/smart-i2c-motor-driver/reference/core)
+- [Troubleshooting](https://Mahudjro369.github.io/smart-i2c-motor-driver/troubleshooting)
 
 ## Requirements
 
@@ -111,14 +111,14 @@ Full documentation is available at: [https://yourusername.github.io/smart-i2c-mo
 
 Using pip:
 ```bash
-git clone https://github.com/yourusername/smart-i2c-motor-driver.git
+git clone https://github.com/Mahudjro369/smart-i2c-motor-driver.git
 cd smart-i2c-motor-driver/Python\ Master
 pip install -e .[dev]
 ```
 
 Using uv (faster):
 ```bash
-git clone https://github.com/yourusername/smart-i2c-motor-driver.git
+git clone https://github.com/Mahudjro369/smart-i2c-motor-driver.git
 cd smart-i2c-motor-driver/Python\ Master
 uv venv
 source .venv/bin/activate  # On macOS/Linux
@@ -134,7 +134,7 @@ pytest
 ### Run Tests with Coverage
 
 ```bash
-pytest --cov=smart_i2c_motor_driver --cov-report=html
+pytest --cov=smi2c_master --cov-report=html
 ```
 
 ### Build Documentation Locally
@@ -148,14 +148,14 @@ Then visit http://127.0.0.1:8000
 ### GitHub Pages
 
 Documentation is automatically deployed to GitHub Pages when pushing to the main branch. Visit:
-https://yourusername.github.io/smart-i2c-motor-driver
+https://Mahudjro369.github.io/smart-i2c-motor-driver
 
 ## Project Structure
 
 ```
 Python Master/
 ├── src/
-│   └── smart_i2c_motor_driver/
+│   └── smi2c_master/
 │       ├── __init__.py
 │       ├── logging.py
 │       ├── core/
@@ -196,16 +196,16 @@ This project is licensed under the MIT License - see the [LICENSE](../LICENSE) f
 
 ## Support
 
-- 📖 [Documentation](https://yourusername.github.io/smart-i2c-motor-driver)
-- 🐛 [Issue Tracker](https://github.com/yourusername/smart-i2c-motor-driver/issues)
-- 💬 [Discussions](https://github.com/yourusername/smart-i2c-motor-driver/discussions)
+- 📖 [Documentation](https://Mahudjro369.github.io/smart-i2c-motor-driver)
+- 🐛 [Issue Tracker](https://github.com/Mahudjro369/smart-i2c-motor-driver/issues)
+- 💬 [Discussions](https://github.com/Mahudjro369/smart-i2c-motor-driver/discussions)
 
 ## Examples
 
 ### Multiple Motors
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 with I2CTransport(bus_number=1) as transport:
     left_motor = MotorDriver(transport, address=0xFE)
@@ -219,7 +219,7 @@ with I2CTransport(bus_number=1) as transport:
 ### Error Handling
 
 ```python
-from smart_i2c_motor_driver import (
+from smi2c_master import (
     I2CTransport,
     MotorDriver,
     TransportError,

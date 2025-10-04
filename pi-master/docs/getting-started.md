@@ -16,7 +16,7 @@ Before starting, ensure you have:
 ### Step 1: Import the Library
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 ```
 
 ### Step 2: Create a Transport
@@ -67,7 +67,7 @@ Here's a complete working example:
 
 ```python
 import time
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 def main():
     # Create transport
@@ -105,7 +105,7 @@ For automatic cleanup, use context managers:
 
 ```python
 import time
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 with I2CTransport(bus_number=1) as transport:
     motor = MotorDriver(transport, address=0xFE)
@@ -123,7 +123,7 @@ with I2CTransport(bus_number=1) as transport:
 Control multiple motors on the same bus:
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 with I2CTransport(bus_number=1) as transport:
     # Create multiple motor instances
@@ -146,7 +146,7 @@ with I2CTransport(bus_number=1) as transport:
 Always handle potential errors:
 
 ```python
-from smart_i2c_motor_driver import (
+from smi2c_master import (
     I2CTransport,
     MotorDriver,
     InvalidSpeedError,
@@ -172,7 +172,7 @@ Enable logging to debug issues:
 
 ```python
 import logging
-from smart_i2c_motor_driver import setup_logging
+from smi2c_master import setup_logging
 
 # Enable debug logging
 setup_logging(level=logging.DEBUG)

@@ -7,7 +7,7 @@ This guide covers the common usage patterns for the Smart I2C Motor Driver libra
 The transport manages the I2C bus connection. All motor drivers share a single transport instance:
 
 ```python
-from smart_i2c_motor_driver import I2CTransport
+from smi2c_master import I2CTransport
 
 # Default bus (1)
 transport = I2CTransport()
@@ -21,7 +21,7 @@ transport = I2CTransport(bus_number=0)
 Create motor driver instances for each motor:
 
 ```python
-from smart_i2c_motor_driver import MotorDriver
+from smi2c_master import MotorDriver
 
 # Default address (0xFE)
 motor = MotorDriver(transport)
@@ -84,7 +84,7 @@ motor.forward(255)  # 100% speed
 Control multiple motors independently:
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 # Shared transport
 transport = I2CTransport(bus_number=1)
@@ -133,7 +133,7 @@ print(motor.is_active)  # False after stopping
 Use context managers for automatic cleanup:
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 # Transport context manager
 with I2CTransport(bus_number=1) as transport:
@@ -148,7 +148,7 @@ with I2CTransport(bus_number=1) as transport:
 Handle common errors:
 
 ```python
-from smart_i2c_motor_driver import (
+from smi2c_master import (
     I2CTransport,
     MotorDriver,
     InvalidSpeedError,
@@ -180,7 +180,7 @@ Control motor timing with delays:
 
 ```python
 import time
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 with I2CTransport() as transport:
     motor = MotorDriver(transport)
@@ -249,7 +249,7 @@ Enable logging for debugging:
 
 ```python
 import logging
-from smart_i2c_motor_driver import setup_logging
+from smi2c_master import setup_logging
 
 # Info level (default)
 setup_logging(level=logging.INFO)
@@ -277,7 +277,7 @@ setup_logging(
 ```python
 import time
 import logging
-from smart_i2c_motor_driver import (
+from smi2c_master import (
     I2CTransport,
     MotorDriver,
     setup_logging,

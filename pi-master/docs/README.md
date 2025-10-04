@@ -44,7 +44,7 @@ Documentation is automatically deployed to GitHub Pages when you push to the mai
    - The GitHub Action will run automatically
    - Check the "Actions" tab to monitor progress
    - Once complete, your docs will be live at:
-     `https://yourusername.github.io/smart-i2c-motor-driver`
+     `https://Mahudjro369.github.io/smart-i2c-motor-driver`
 
 ### Manual Deployment
 
@@ -98,7 +98,7 @@ If the documentation build fails:
 2. Verify all links are valid
 3. Ensure mkdocstrings can import the package:
    ```bash
-   python -c "import smart_i2c_motor_driver"
+   python -c "import smi2c_master"
    ```
 
 ### GitHub Pages Not Updating

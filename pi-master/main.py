@@ -2,7 +2,7 @@
 
 import time
 import logging
-from smart_i2c_motor_driver import (
+from smi2c_master import (
     I2CTransport,
     MotorDriver,
     setup_logging,

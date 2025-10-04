@@ -140,7 +140,7 @@ transport = I2CTransport(bus_number=0)  # or 1
 
 ```python
 import logging
-from smart_i2c_motor_driver import setup_logging
+from smi2c_master import setup_logging
 
 # Enable verbose logging
 setup_logging(level=logging.DEBUG)
@@ -233,7 +233,7 @@ motor.forward(255)   # 100%
 
 ### Import Errors
 
-**Problem**: `ModuleNotFoundError: No module named 'smart_i2c_motor_driver'`
+**Problem**: `ModuleNotFoundError: No module named 'smi2c_master'`
 
 **Solution**:
 
@@ -318,7 +318,7 @@ motor.forward(int(200.5))  # Convert to int
 
 ```python
 import logging
-from smart_i2c_motor_driver import setup_logging
+from smi2c_master import setup_logging
 
 setup_logging(level=logging.DEBUG)
 ```
@@ -342,7 +342,7 @@ i2cset -y 1 0xFE 0x01
 ### Minimal Test Program
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver, setup_logging
+from smi2c_master import I2CTransport, MotorDriver, setup_logging
 import logging
 
 # Enable logging
@@ -381,7 +381,7 @@ except Exception as e:
 
 If you still have issues:
 
-1. Check the [GitHub Issues](https://github.com/yourusername/smart-i2c-motor-driver/issues)
+1. Check the [GitHub Issues](https://github.com/Mahudjro369/smart-i2c-motor-driver/issues)
 2. Enable debug logging and include output
 3. Include your hardware setup details
 4. Provide the full error traceback

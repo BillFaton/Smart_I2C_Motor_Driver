@@ -75,7 +75,7 @@ pip install smart-i2c-motor-driver[all]
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/smart-i2c-motor-driver.git
+git clone https://github.com/Mahudjro369/smart-i2c-motor-driver.git
 cd smart-i2c-motor-driver/Python\ Master
 ```
 
@@ -164,8 +164,8 @@ uv pip install --system -e .
 Verify the installation:
 
 ```python
-import smart_i2c_motor_driver
-print(smart_i2c_motor_driver.__version__)
+import smi2c_master
+print(smi2c_master.__version__)
 ```
 
 Run tests (if dev dependencies installed):

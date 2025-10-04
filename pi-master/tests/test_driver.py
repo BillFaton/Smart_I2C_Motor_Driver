@@ -4,8 +4,8 @@ from unittest.mock import Mock, call
 
 import pytest
 
-from smart_i2c_motor_driver import InvalidAddressError, MotorDriver
-from smart_i2c_motor_driver.core.protocol import Direction, MotorState
+from smi2c_master import InvalidAddressError, MotorDriver
+from smi2c_master.core.protocol import Direction, MotorState
 
 
 class TestMotorDriverInit:

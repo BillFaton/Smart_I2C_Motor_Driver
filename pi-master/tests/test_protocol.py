@@ -2,7 +2,7 @@
 
 import pytest
 
-from smart_i2c_motor_driver.core.protocol import (
+from smi2c_master.core.protocol import (
     DEFAULT_ADDRESS,
     MAX_SPEED,
     MIN_SPEED,

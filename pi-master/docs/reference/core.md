@@ -4,7 +4,7 @@ This page documents the core motor driver functionality.
 
 ## MotorDriver
 
-::: smart_i2c_motor_driver.core.driver.MotorDriver
+::: smi2c_master.core.driver.MotorDriver
     options:
       show_root_heading: true
       show_source: true
@@ -13,17 +13,17 @@ This page documents the core motor driver functionality.
 
 ### Enums
 
-::: smart_i2c_motor_driver.core.protocol.MotorState
+::: smi2c_master.core.protocol.MotorState
     options:
       show_root_heading: true
       
-::: smart_i2c_motor_driver.core.protocol.Direction
+::: smi2c_master.core.protocol.Direction
     options:
       show_root_heading: true
 
 ### Constants
 
-::: smart_i2c_motor_driver.core.protocol
+::: smi2c_master.core.protocol
     options:
       show_root_heading: false
       members:
@@ -33,24 +33,24 @@ This page documents the core motor driver functionality.
 
 ### Validation Functions
 
-::: smart_i2c_motor_driver.core.protocol.validate_speed
+::: smi2c_master.core.protocol.validate_speed
     options:
       show_root_heading: true
 
-::: smart_i2c_motor_driver.core.protocol.validate_address
+::: smi2c_master.core.protocol.validate_address
     options:
       show_root_heading: true
 
 ### Exceptions
 
-::: smart_i2c_motor_driver.core.protocol.ProtocolError
+::: smi2c_master.core.protocol.ProtocolError
     options:
       show_root_heading: true
 
-::: smart_i2c_motor_driver.core.protocol.InvalidSpeedError
+::: smi2c_master.core.protocol.InvalidSpeedError
     options:
       show_root_heading: true
 
-::: smart_i2c_motor_driver.core.protocol.InvalidAddressError
+::: smi2c_master.core.protocol.InvalidAddressError
     options:
       show_root_heading: true

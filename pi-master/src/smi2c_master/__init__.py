@@ -4,7 +4,7 @@ This package provides a high-level interface for controlling motors via I2C
 using the Smart Driver Protocol.
 
 Basic Usage:
-    >>> from smart_i2c_motor_driver import I2CTransport, MotorDriver
+    >>> from smi2c_master import I2CTransport, MotorDriver
     >>> 
     >>> # Create shared I2C transport
     >>> transport = I2CTransport(bus_number=1)

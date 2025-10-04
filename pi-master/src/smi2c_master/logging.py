@@ -1,4 +1,4 @@
-"""Logging configuration for smart_i2c_motor_driver."""
+"""Logging configuration for smi2c_master."""
 
 import logging
 import sys
@@ -18,7 +18,7 @@ def setup_logging(
         stream: Output stream (default: sys.stdout)
         
     Example:
-        >>> from smart_i2c_motor_driver import setup_logging
+        >>> from smi2c_master import setup_logging
         >>> import logging
         >>> setup_logging(level=logging.DEBUG)
     """
@@ -31,7 +31,7 @@ def setup_logging(
         stream = sys.stdout
     
     # Configure root logger for this package
-    logger = logging.getLogger("smart_i2c_motor_driver")
+    logger = logging.getLogger("smi2c_master")
     logger.setLevel(level)
     
     # Remove existing handlers
@@ -57,4 +57,4 @@ def get_logger(name: str) -> logging.Logger:
     Returns:
         Logger instance
     """
-    return logging.getLogger(f"smart_i2c_motor_driver.{name}")
+    return logging.getLogger(f"smi2c_master.{name}")

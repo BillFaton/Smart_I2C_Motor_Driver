@@ -23,7 +23,7 @@ pip install smart-i2c-motor-driver
 Basic usage:
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 # Create I2C transport
 transport = I2CTransport(bus_number=1)
@@ -55,7 +55,7 @@ The library handles this protocol automatically.
 Control multiple motors using the same I2C bus:
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 # Shared transport
 transport = I2CTransport(bus_number=1)

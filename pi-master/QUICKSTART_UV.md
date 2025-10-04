@@ -86,7 +86,7 @@ uv run python main.py
 pytest
 
 # With coverage
-pytest --cov=smart_i2c_motor_driver --cov-report=html
+pytest --cov=smi2c_master --cov-report=html
 ```
 
 ## Building Documentation
@@ -114,7 +114,7 @@ smart-motor --bus 1 --address 0xFE forward 200 --duration 2.0
 ## Usage Example
 
 ```python
-from smart_i2c_motor_driver import I2CTransport, MotorDriver
+from smi2c_master import I2CTransport, MotorDriver
 
 # Create transport and motor
 with I2CTransport(bus_number=1) as transport:
@@ -129,7 +129,7 @@ with I2CTransport(bus_number=1) as transport:
 
 After pushing to GitHub, documentation will automatically deploy to:
 ```
-https://yourusername.github.io/smart-i2c-motor-driver
+https://Mahudjro369.github.io/smart-i2c-motor-driver
 ```
 
 See [docs/README.md](docs/README.md) for setup instructions.
