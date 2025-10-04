@@ -1,60 +1,95 @@
-site_name: Smart I2C Motor Driver
-site_description: Python library for controlling I2C motor controllers
-site_author: Your Name
-site_url: https://yourusername.github.io/smart-i2c-motor-driver
+site_name: Smart I2C Motor Driver Documentation
+site_description: Python library for controlling I2C motor controllers with hardware-agnostic serial communication
+site_author: Smart I2C Motor Driver Contributors
+site_url: https://Mahudjro369.github.io/smart-i2c-motor-driver/
 
-repo_name: yourusername/smart-i2c-motor-driver
-repo_url: https://github.com/yourusername/smart-i2c-motor-driver
+repo_url: https://github.com/Mahudjro369/Smart_I2C_Motor_Driver
+repo_name: Mahudjro369/Smart_I2C_Motor_Driver
+edit_uri: edit/main/docs/
 
+# Configuration
 theme:
   name: material
+  language: en
   palette:
+    # Palette toggle for light mode
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    # Palette toggle for dark mode
     - scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
   features:
+    - navigation.instant
+    - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.top
-    - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.action.edit
+    - content.action.view
 
+# Extensions
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - abbr
+  - def_list
+  - toc:
+      permalink: true
+
+# Plugins
 plugins:
   - search
   - mkdocstrings:
       handlers:
         python:
+          paths: [src, .]
           options:
             docstring_style: google
             show_source: true
             show_root_heading: true
+            show_root_toc_entry: true
             show_root_full_path: false
             heading_level: 2
+            members_order: source
+            show_signature_annotations: true
+            separate_signature: true
 
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.tabbed:
-      alternate_style: true
-  - toc:
-      permalink: true
-
+# Page tree
 nav:
   - Home: index.md
   - Getting Started:
@@ -68,5 +103,14 @@ nav:
     - Transports: reference/transports.md
   - Troubleshooting: troubleshooting.md
 
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/smart-i2c-motor-driver
+
+# Custom CSS
 extra_css:
   - stylesheets/extra.css
+
+copyright: Copyright &copy; 2024 Smart I2C Motor Driver Contributors
