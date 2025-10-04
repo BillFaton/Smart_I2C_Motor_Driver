@@ -22,7 +22,7 @@ dependencies = [
     "smbus2>=0.4.0",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
@@ -36,9 +36,6 @@ docs = [
 ]
 cli = [
     "click>=8.0.0",
-]
-all = [
-    "smart-i2c-motor-driver[dev,docs,cli]",
 ]
 
 [project.scripts]
