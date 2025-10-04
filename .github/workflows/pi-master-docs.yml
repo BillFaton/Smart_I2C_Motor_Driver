@@ -1,4 +1,4 @@
-name: Pi-Master Documentation
+name: smi2c_master Documentation
 
 on:
   push:
@@ -34,11 +34,11 @@ jobs:
         run: uv python install
 
       - name: Install dependencies
-        working-directory: ./pi-master
+        working-directory: ./smi2c_master
         run: uv sync --group docs
 
       - name: Build documentation
-        working-directory: ./pi-master
+        working-directory: ./smi2c_master
         run: uv run mkdocs build --clean
 
       - name: Deploy to GitHub Pages
@@ -46,5 +46,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./pi-master/site
-          destination_dir: pi-master
+          publish_dir: ./smi2c_master/site
+          destination_dir: smi2c_master

@@ -1,11 +1,11 @@
 site_name: Python Library Documentation
 site_description: Python library for controlling I2C motor controllers with hardware-agnostic serial communication
 site_author: Smart I2C Motor Driver Contributors
-site_url: https://Mahudjro369.github.io/smi2c_master/pi-master/
+site_url: https://Mahudjro369.github.io/smi2c_master/smi2c_master/
 
 repo_url: https://github.com/Mahudjro369/smi2c_master
 repo_name: Mahudjro369/smi2c_master
-edit_uri: edit/main/pi-master/docs/
+edit_uri: edit/main/smi2c_master/docs/
 
 # Configuration
 theme:
