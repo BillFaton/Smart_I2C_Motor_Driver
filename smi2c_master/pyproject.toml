@@ -3,7 +3,7 @@ name = "smi2c_master"
 version = "0.1.0"
 description = "Python library for controlling I2C motor controllers using the Smart Driver Protocol"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Your Name", email = "your.email@example.com"},
