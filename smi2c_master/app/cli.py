@@ -12,6 +12,7 @@ from smi2c_master import (
     InvalidAddressError,
     InvalidSpeedError,
     MotorDriver,
+    MotorID,
     TransportError,
     setup_logging,
 )
@@ -29,8 +30,15 @@ from smi2c_master import (
     "--address",
     "-a",
     type=lambda x: int(x, 0),
-    default=0xFE,
-    help="Motor I2C address (default: 0xFE)",
+    default=0x7F,
+    help="Motor I2C slave address (default: 0x7F)",
+)
+@click.option(
+    "--motor",
+    "-m",
+    type=click.Choice(["0", "1"]),
+    default="0",
+    help="Motor ID: 0 or 1 (default: 0)",
 )
 @click.option(
     "--verbose",
@@ -39,19 +47,23 @@ from smi2c_master import (
     help="Enable verbose logging",
 )
 @click.pass_context
-def cli(ctx, bus: int, address: int, verbose: bool):
+def cli(ctx, bus: int, address: int, motor: str, verbose: bool):
     """Smart I2C Motor Driver CLI.
     
-    Control motors connected via I2C using the Smart Driver Protocol.
+    Control motors connected via I2C using the Smart Driver Protocol (4-step).
     """
     # Setup logging
     level = logging.DEBUG if verbose else logging.INFO
     setup_logging(level=level)
     
+    # Convert motor ID string to MotorID enum
+    motor_id = MotorID.MOTOR_0 if motor == "0" else MotorID.MOTOR_1
+    
     # Store configuration in context
     ctx.ensure_object(dict)
     ctx.obj["bus"] = bus
     ctx.obj["address"] = address
+    ctx.obj["motor_id"] = motor_id
 
 
 @cli.command()
@@ -67,9 +79,9 @@ def forward(ctx, speed: int, duration: Optional[float]):
     """Run motor forward at specified SPEED (0-255)."""
     try:
         with I2CTransport(ctx.obj["bus"]) as transport:
-            motor = MotorDriver(transport, ctx.obj["address"])
+            motor = MotorDriver(transport, ctx.obj["motor_id"], ctx.obj["address"])
             motor.forward(speed)
-            click.echo(f"Motor running forward at speed {speed}")
+            click.echo(f"Motor {ctx.obj['motor_id'].value} running forward at speed {speed}")
             
             if duration:
                 time.sleep(duration)
@@ -93,9 +105,9 @@ def backward(ctx, speed: int, duration: Optional[float]):
     """Run motor backward at specified SPEED (0-255)."""
     try:
         with I2CTransport(ctx.obj["bus"]) as transport:
-            motor = MotorDriver(transport, ctx.obj["address"])
+            motor = MotorDriver(transport, ctx.obj["motor_id"], ctx.obj["address"])
             motor.backward(speed)
-            click.echo(f"Motor running backward at speed {speed}")
+            click.echo(f"Motor {ctx.obj['motor_id'].value} running backward at speed {speed}")
             
             if duration:
                 time.sleep(duration)
@@ -112,9 +124,9 @@ def stop(ctx):
     """Stop the motor."""
     try:
         with I2CTransport(ctx.obj["bus"]) as transport:
-            motor = MotorDriver(transport, ctx.obj["address"])
+            motor = MotorDriver(transport, ctx.obj["motor_id"], ctx.obj["address"])
             motor.stop()
-            click.echo("Motor stopped")
+            click.echo(f"Motor {ctx.obj['motor_id'].value} stopped")
     except (TransportError, InvalidAddressError) as e:
         click.echo(f"Error: {e}", err=True)
         sys.exit(1)
@@ -124,9 +136,10 @@ def stop(ctx):
 @click.pass_context
 def info(ctx):
     """Display motor driver information."""
-    click.echo("Smart I2C Motor Driver")
+    click.echo("Smart I2C Motor Driver (4-step protocol)")
     click.echo(f"I2C Bus: {ctx.obj['bus']}")
-    click.echo(f"Address: 0x{ctx.obj['address']:02X}")
+    click.echo(f"Slave Address: 0x{ctx.obj['address']:02X}")
+    click.echo(f"Motor ID: {ctx.obj['motor_id'].value}")
 
 
 def main():

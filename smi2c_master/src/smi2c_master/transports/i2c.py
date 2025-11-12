@@ -1,6 +1,7 @@
 """I2C transport implementation using smbus2."""
 
 import logging
+import time
 from typing import Optional
 
 from .base import Transport, TransportError

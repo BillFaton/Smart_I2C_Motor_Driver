@@ -8,6 +8,7 @@ from .protocol import (
     Direction,
     InvalidAddressError,
     InvalidSpeedError,
+    MotorID,
     MotorState,
     ProtocolError,
 )
@@ -15,6 +16,7 @@ from .protocol import (
 __all__ = [
     "MotorDriver",
     "Direction",
+    "MotorID",
     "MotorState",
     "ProtocolError",
     "InvalidSpeedError",

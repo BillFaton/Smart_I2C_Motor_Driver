@@ -4,20 +4,34 @@ This module defines the communication protocol constants and validation
 functions based on the Smart Driver Protocol specification.
 
 Protocol Overview:
-    The motor driver requires three sequential I2C write operations:
-    1. Motor activation (0x00 = off, 0x01 = on)
-    2. Direction (0x00 = forward, 0x01 = backward)
-    3. Speed (0x00-0xFF PWM value)
+    The motor driver requires four sequential I2C write operations:
+    1. T1: Motor ID (0x00 = Motor 0, 0x01 = Motor 1)
+    2. T2: Activation (0x00 = DEACTIVATE, 0x01 = ACTIVATE)
+    3. T3: Direction (0x00 = FORWARD, 0x01 = BACKWARD)
+    4. T4: Speed (0x00-0xFF PWM value)
+    
+    Each transaction is a separate I2C Start-Write-Stop cycle performed
+    sequentially without delays between transactions.
 """
 
 from enum import IntEnum
 from typing import Final
 
 
+class MotorID(IntEnum):
+    """Motor ID identifiers."""
+    MOTOR_0 = 0x00
+    MOTOR_1 = 0x01
+
+
 class MotorState(IntEnum):
     """Motor activation states."""
-    OFF = 0x00
-    ON = 0x01
+    DEACTIVATE = 0x00
+    ACTIVATE = 0x01
+    
+    # Legacy aliases for backward compatibility
+    OFF = DEACTIVATE
+    ON = ACTIVATE
 
 
 class Direction(IntEnum):
@@ -29,7 +43,7 @@ class Direction(IntEnum):
 # Protocol constants
 MIN_SPEED: Final[int] = 0
 MAX_SPEED: Final[int] = 255
-DEFAULT_ADDRESS: Final[int] = 0xFE
+DEFAULT_ADDRESS: Final[int] = 0x7F  # 7-bit address 127, corresponds to 8-bit address 0xFE
 
 
 class ProtocolError(Exception):

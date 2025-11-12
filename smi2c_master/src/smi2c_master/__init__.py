@@ -1,16 +1,16 @@
 """Smart I2C Motor Driver - Python library for controlling I2C motor controllers.
 
 This package provides a high-level interface for controlling motors via I2C
-using the Smart Driver Protocol.
+using the Smart Driver Protocol (4-step command sequence).
 
 Basic Usage:
-    >>> from smi2c_master import I2CTransport, MotorDriver
+    >>> from smi2c_master import I2CTransport, MotorDriver, MotorID
     >>> 
     >>> # Create shared I2C transport
     >>> transport = I2CTransport(bus_number=1)
     >>> 
-    >>> # Create motor driver instance
-    >>> motor = MotorDriver(transport, address=0xFE)
+    >>> # Create motor driver instance for Motor 0
+    >>> motor = MotorDriver(transport, MotorID.MOTOR_0)
     >>> 
     >>> # Control the motor
     >>> motor.forward(200)   # Run forward at speed 200
@@ -22,16 +22,16 @@ Basic Usage:
 
 With context manager:
     >>> with I2CTransport() as transport:
-    ...     motor = MotorDriver(transport)
+    ...     motor = MotorDriver(transport, MotorID.MOTOR_1)
     ...     motor.forward(128)
     ...     motor.stop()
 
-Multiple motors:
+Multiple motors on same slave:
     >>> transport = I2CTransport(bus_number=1)
-    >>> motor1 = MotorDriver(transport, address=0xFE)
-    >>> motor2 = MotorDriver(transport, address=0xFF)
-    >>> motor1.forward(200)
-    >>> motor2.backward(150)
+    >>> motor0 = MotorDriver(transport, MotorID.MOTOR_0)  # Motor 0 on slave 0x7F
+    >>> motor1 = MotorDriver(transport, MotorID.MOTOR_1)  # Motor 1 on slave 0x7F
+    >>> motor0.forward(200)
+    >>> motor1.backward(150)
 """
 
 __version__ = "0.1.0"
@@ -44,6 +44,7 @@ from .core import (
     InvalidAddressError,
     InvalidSpeedError,
     MotorDriver,
+    MotorID,
     MotorState,
     ProtocolError,
 )
@@ -56,6 +57,7 @@ __all__ = [
     # Core classes
     "MotorDriver",
     "Direction",
+    "MotorID",
     "MotorState",
     # Transport classes
     "Transport",
